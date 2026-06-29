@@ -531,7 +531,7 @@ const slides: Slide[] = [
             }}
           >
             <div style={{ color: GOLD, fontSize: 20, marginBottom: 14, fontFamily: SANS }}>
-              Director Kou's U.S. trip
+              Dr. Kou's U.S. trip
             </div>
             <Body size={24}>Met with Johnny in person to make sure chemistry was solid.</Body>
           </div>
