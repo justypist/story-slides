@@ -1,6 +1,6 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-NWw7PBej.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-AIcwxast.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG = "#0B1220";
@@ -65,12 +65,13 @@ function SlideShell({ children, align = "start", paddingX = 140, paddingY = 120 
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		style: {
 			width: "100%",
-			height: "100%",
+			minHeight: 1080,
 			padding: `${paddingY}px ${paddingX}px`,
 			display: "flex",
 			flexDirection: "column",
 			justifyContent: align === "center" ? "center" : "flex-start",
-			gap: 44
+			gap: 44,
+			boxSizing: "border-box"
 		},
 		children
 	});
@@ -961,9 +962,7 @@ function useScale() {
 	const [scale, setScale] = (0, import_react.useState)(1);
 	(0, import_react.useEffect)(() => {
 		const fit = () => {
-			const sx = window.innerWidth / 1920;
-			const sy = window.innerHeight / 1080;
-			setScale(Math.min(sx, sy));
+			setScale(Math.min(1, window.innerWidth / 1920));
 		};
 		fit();
 		window.addEventListener("resize", fit);
@@ -991,14 +990,13 @@ function StoryDeck() {
 	}, [total]);
 	(0, import_react.useEffect)(() => {
 		const onKey = (e) => {
-			if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+			if (e.key === "ArrowRight") {
 				e.preventDefault();
 				go(index + 1);
-			} else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+			} else if (e.key === "ArrowLeft") {
 				e.preventDefault();
 				go(index - 1);
-			} else if (e.key === "Home") go(0);
-			else if (e.key === "End") go(total - 1);
+			}
 		};
 		window.addEventListener("keydown", onKey);
 		return () => window.removeEventListener("keydown", onKey);
@@ -1009,14 +1007,19 @@ function StoryDeck() {
 	]);
 	const slide = slides[index];
 	const progress = (0, import_react.useMemo)(() => (index + 1) / total * 100, [index, total]);
+	(0, import_react.useEffect)(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: "auto"
+		});
+	}, [index]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		style: {
 			minHeight: "100vh",
-			width: "100vw",
+			width: "100%",
 			background: BG,
 			color: INK,
 			position: "relative",
-			overflow: "hidden",
 			fontFamily: SANS
 		},
 		children: [
@@ -1033,22 +1036,19 @@ function StoryDeck() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				style: {
 					position: "relative",
-					width: "100vw",
-					height: "100vh",
-					overflow: "hidden"
+					width: "100%",
+					minHeight: "100vh",
+					display: "flex",
+					justifyContent: "center",
+					overflowX: "hidden"
 				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					style: {
-						position: "absolute",
 						width: 1920,
-						height: 1080,
-						left: "50%",
-						top: "50%",
-						marginLeft: -960,
-						marginTop: -540,
-						transform: `scale(${scale})`,
-						transformOrigin: "center center",
-						background: BG
+						minHeight: 1080,
+						position: "relative",
+						background: BG,
+						zoom: scale
 					},
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { style: {
@@ -1100,8 +1100,7 @@ function StoryDeck() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							style: {
-								position: "absolute",
-								inset: 0,
+								position: "relative",
 								animation: "slideIn 480ms cubic-bezier(.2,.7,.2,1)"
 							},
 							children: slide.render()
