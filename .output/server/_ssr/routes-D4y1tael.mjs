@@ -1,6 +1,6 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-AIcwxast.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-D4y1tael.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG = "#0B1220";
@@ -12,11 +12,11 @@ var GOLD_SOFT = "#F2D38A";
 var LINE = "rgba(244,239,230,0.12)";
 var SERIF = "'Playfair Display', Georgia, serif";
 var SANS = "'Inter', system-ui, sans-serif";
-function Kicker({ children }) {
+function Kicker({ children, size = 20 }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		style: {
 			color: GOLD,
-			fontSize: 20,
+			fontSize: size,
 			letterSpacing: "0.32em",
 			fontWeight: 500,
 			textTransform: "uppercase",
@@ -606,7 +606,10 @@ var slides = [
 			align: "center",
 			paddingX: 220,
 			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Kicker, { children: "Part 2 · What I Took Away" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Kicker, {
+					size: 24,
+					children: "Part 2 · What I Took Away"
+				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Title, {
 					size: 84,
 					children: [
@@ -625,7 +628,7 @@ var slides = [
 					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Body, {
-					size: 26,
+					size: 30,
 					color: MUTED,
 					maxWidth: 1300,
 					children: "That experience gave me real confidence going into every subsequent leadership conversation."
@@ -663,7 +666,7 @@ var slides = [
 							marginBottom: 14,
 							fontFamily: SANS
 						},
-						children: "Director Kou's U.S. trip"
+						children: "Dr. Kou's U.S. trip"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Body, {
 						size: 24,
 						children: "Met with Johnny in person to make sure chemistry was solid."
@@ -1057,25 +1060,6 @@ function StoryDeck() {
 							backgroundImage: "radial-gradient(1100px 700px at 88% 12%, rgba(230,181,102,0.10), transparent 60%), radial-gradient(900px 600px at 8% 92%, rgba(72,120,200,0.12), transparent 60%)",
 							pointerEvents: "none"
 						} }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							style: {
-								position: "absolute",
-								top: 56,
-								left: 64,
-								display: "flex",
-								alignItems: "center",
-								gap: 14,
-								color: MUTED,
-								fontSize: 18,
-								letterSpacing: "0.28em",
-								fontFamily: SANS
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { style: {
-								width: 28,
-								height: 2,
-								background: GOLD
-							} }), "MC0003"]
-						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							style: {
 								position: "absolute",
