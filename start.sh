@@ -1,2 +1,3 @@
-HOST=0.0.0.0 PORT=50080 node .output/server/index.mjs
+git pull
+HOST=0.0.0.0 PORT=50081 node .output/server/index.mjs
 
