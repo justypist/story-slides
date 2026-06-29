@@ -38,12 +38,12 @@ type Slide = {
 };
 
 // ---------- typography ----------
-function Kicker({ children }: { children: ReactNode }) {
+function Kicker({ children, size = 20 }: { children: ReactNode; size?: number }) {
   return (
     <div
       style={{
         color: GOLD,
-        fontSize: 20,
+        fontSize: size,
         letterSpacing: "0.32em",
         fontWeight: 500,
         textTransform: "uppercase",
@@ -500,14 +500,14 @@ const slides: Slide[] = [
     id: "learning",
     render: () => (
       <SlideShell align="center" paddingX={220}>
-        <Kicker>Part 2 · What I Took Away</Kicker>
+        <Kicker size={24}>Part 2 · What I Took Away</Kicker>
         <Title size={84}>
           Scientific communication{" "}
           <span style={{ color: GOLD, fontStyle: "italic" }}>actually shaped the decision</span> —
           <br />
           not just relayed information.
         </Title>
-        <Body size={26} color={MUTED} maxWidth={1300}>
+        <Body size={30} color={MUTED} maxWidth={1300}>
           That experience gave me real confidence going into every subsequent leadership
           conversation.
         </Body>
@@ -531,7 +531,7 @@ const slides: Slide[] = [
             }}
           >
             <div style={{ color: GOLD, fontSize: 20, marginBottom: 14, fontFamily: SANS }}>
-              Director Kou's U.S. trip
+              Dr. Kou's U.S. trip
             </div>
             <Body size={24}>Met with Johnny in person to make sure chemistry was solid.</Body>
           </div>
@@ -901,23 +901,6 @@ function StoryDeck() {
               pointerEvents: "none",
             }}
           />
-          <div
-            style={{
-              position: "absolute",
-              top: 56,
-              left: 64,
-              display: "flex",
-              alignItems: "center",
-              gap: 14,
-              color: MUTED,
-              fontSize: 18,
-              letterSpacing: "0.28em",
-              fontFamily: SANS,
-            }}
-          >
-            <div style={{ width: 28, height: 2, background: GOLD }} />
-            MC0003
-          </div>
           <div
             style={{
               position: "absolute",
