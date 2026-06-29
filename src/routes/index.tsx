@@ -827,21 +827,18 @@ function StoryDeck() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+      if (e.key === "ArrowRight") {
         e.preventDefault();
         go(index + 1);
-      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      } else if (e.key === "ArrowLeft") {
         e.preventDefault();
         go(index - 1);
-      } else if (e.key === "Home") {
-        go(0);
-      } else if (e.key === "End") {
-        go(total - 1);
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [index, go, total]);
+
 
   const slide = slides[index];
   const progress = useMemo(() => ((index + 1) / total) * 100, [index, total]);
