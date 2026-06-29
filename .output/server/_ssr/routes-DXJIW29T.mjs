@@ -1,6 +1,6 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-D4y1tael.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DXJIW29T.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG = "#0B1220";
@@ -588,12 +588,12 @@ var slides = [
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Body, {
 						size: 26,
 						children: [
-							"On-the-spot decision: have ",
+							"On-the-spot decision: “Have ",
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								style: { color: GOLD_SOFT },
 								children: "Johnny"
 							}),
-							" in chemistry take a look — if it checks out, we move forward."
+							" in Chemistry review it; if no major issue, proceed”"
 						]
 					})
 				})
