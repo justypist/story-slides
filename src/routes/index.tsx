@@ -844,15 +844,18 @@ function StoryDeck() {
   const slide = slides[index];
   const progress = useMemo(() => ((index + 1) / total) * 100, [index, total]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [index]);
+
   return (
     <div
       style={{
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         background: BG,
         color: INK,
         position: "relative",
-        overflow: "hidden",
         fontFamily: SANS,
       }}
     >
@@ -872,23 +875,22 @@ function StoryDeck() {
       <div
         style={{
           position: "relative",
-          width: "100vw",
-          height: "100vh",
-          overflow: "hidden",
+          width: "100%",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <div
           style={{
-            position: "absolute",
             width: 1920,
-            height: 1080,
-            left: "50%",
-            top: "50%",
-            marginLeft: -960,
-            marginTop: -540,
-            transform: `scale(${scale})`,
-            transformOrigin: "center center",
+            minHeight: 1080,
+            position: "relative",
             background: BG,
+            transform: `scale(${scale})`,
+            transformOrigin: "top center",
+            // shrink the layout footprint so the page doesn't reserve unscaled space
+            marginBottom: `calc((${scale} - 1) * 1080px)`,
           }}
         >
           <div
@@ -936,8 +938,7 @@ function StoryDeck() {
           <div
             key={slide.id}
             style={{
-              position: "absolute",
-              inset: 0,
+              position: "relative",
               animation: "slideIn 480ms cubic-bezier(.2,.7,.2,1)",
             }}
           >
@@ -945,6 +946,7 @@ function StoryDeck() {
           </div>
         </div>
       </div>
+
 
       <div
         style={{
