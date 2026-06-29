@@ -120,16 +120,18 @@ function SlideShell({
     <div
       style={{
         width: "100%",
-        height: "100%",
+        minHeight: 1080,
         padding: `${paddingY}px ${paddingX}px`,
         display: "flex",
         flexDirection: "column",
         justifyContent: align === "center" ? "center" : "flex-start",
         gap: 44,
+        boxSizing: "border-box",
       }}
     >
       {children}
     </div>
+
   );
 }
 
@@ -779,14 +781,12 @@ const slides: Slide[] = [
   },
 ];
 
-// ---------- 16:9 scaling ----------
+// ---------- width-based scaling (allows vertical scroll) ----------
 function useScale() {
   const [scale, setScale] = useState(1);
   useEffect(() => {
     const fit = () => {
-      const sx = window.innerWidth / 1920;
-      const sy = window.innerHeight / 1080;
-      setScale(Math.min(sx, sy));
+      setScale(Math.min(1, window.innerWidth / 1920));
     };
     fit();
     window.addEventListener("resize", fit);
@@ -794,6 +794,7 @@ function useScale() {
   }, []);
   return scale;
 }
+
 
 function StoryDeck() {
   const total = slides.length;
@@ -826,34 +827,34 @@ function StoryDeck() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+      if (e.key === "ArrowRight") {
         e.preventDefault();
         go(index + 1);
-      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      } else if (e.key === "ArrowLeft") {
         e.preventDefault();
         go(index - 1);
-      } else if (e.key === "Home") {
-        go(0);
-      } else if (e.key === "End") {
-        go(total - 1);
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [index, go, total]);
 
+
   const slide = slides[index];
   const progress = useMemo(() => ((index + 1) / total) * 100, [index, total]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [index]);
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         background: BG,
         color: INK,
         position: "relative",
-        overflow: "hidden",
         fontFamily: SANS,
       }}
     >
@@ -873,25 +874,24 @@ function StoryDeck() {
       <div
         style={{
           position: "relative",
-          width: "100vw",
-          height: "100vh",
-          overflow: "hidden",
+          width: "100%",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          overflowX: "hidden",
         }}
       >
         <div
           style={{
-            position: "absolute",
             width: 1920,
-            height: 1080,
-            left: "50%",
-            top: "50%",
-            marginLeft: -960,
-            marginTop: -540,
-            transform: `scale(${scale})`,
-            transformOrigin: "center center",
+            minHeight: 1080,
+            position: "relative",
             background: BG,
+            zoom: scale,
           }}
+
         >
+
           <div
             style={{
               position: "absolute",
@@ -937,8 +937,7 @@ function StoryDeck() {
           <div
             key={slide.id}
             style={{
-              position: "absolute",
-              inset: 0,
+              position: "relative",
               animation: "slideIn 480ms cubic-bezier(.2,.7,.2,1)",
             }}
           >
@@ -946,6 +945,7 @@ function StoryDeck() {
           </div>
         </div>
       </div>
+
 
       <div
         style={{
