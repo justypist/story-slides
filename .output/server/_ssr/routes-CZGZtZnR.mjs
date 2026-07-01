@@ -1,6 +1,6 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DXJIW29T.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CZGZtZnR.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var BG = "#0B1220";
@@ -596,42 +596,6 @@ var slides = [
 							" in Chemistry review it; if no major issue, proceed”"
 						]
 					})
-				})
-			]
-		})
-	},
-	{
-		id: "learning",
-		render: () => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(SlideShell, {
-			align: "center",
-			paddingX: 220,
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Kicker, {
-					size: 24,
-					children: "Part 2 · What I Took Away"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Title, {
-					size: 84,
-					children: [
-						"Scientific communication",
-						" ",
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							style: {
-								color: GOLD,
-								fontStyle: "italic"
-							},
-							children: "actually shaped the decision"
-						}),
-						" —",
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-						"not just relayed information."
-					]
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Body, {
-					size: 30,
-					color: MUTED,
-					maxWidth: 1300,
-					children: "That experience gave me real confidence going into every subsequent leadership conversation."
 				})
 			]
 		})
